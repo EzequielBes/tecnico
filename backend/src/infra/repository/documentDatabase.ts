@@ -1,5 +1,4 @@
 import { inject } from "../../di/registry";
-import { Account } from "../../domain/entity/Account";
 import { DocumentDatabase } from "../database/documentDatabase";
 import {Document} from "../../domain/entity/Document"
 
@@ -19,6 +18,7 @@ export class DocumentDatabaseRepository implements DocumentRepository {
   constructor () {}
 
     async saveDocument(document: Document): Promise<void> {
+      console.log('test', document)
       await this.documentDatabase.saveDocument(document.document_id, document.user_id,document.document_name, document.status)
     }
 

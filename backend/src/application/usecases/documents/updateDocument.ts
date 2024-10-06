@@ -14,7 +14,7 @@ export class UpdateDocument {
     if (!document) throw new Error("Document not finded");
     const updatedDocument = document.update(input.document_name, input.status)
     await this.documentRepository.updateDocument(updatedDocument)
-    return "Document Created"
+    return "Document Updatted"
   }
 }
 

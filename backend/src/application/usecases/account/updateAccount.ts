@@ -1,5 +1,4 @@
 import { inject } from "../../../di/registry";
-import { Account } from "../../../domain/entity/Account";
 import { AccountRepository } from "../../../infra/repository/databaseRepository";
 
 export class UpdateAccountUseCase {

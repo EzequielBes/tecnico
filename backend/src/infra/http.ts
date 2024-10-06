@@ -2,8 +2,8 @@ import express, { Request, Response, Application } from "express";
 import cors from "cors";
 
 export interface HttpServer {
-  register(method: "get" | "post" | "put" | "delete", url: string, callback: (body: any, query: any) => Promise<any>): void;
-  listen(port: number): void;
+  register(method: "get" | "post" | "put" | "delete", url: string, callback: (body: any, query: any, headers:any) => Promise<any>): void;
+  listen(port: string | undefined): void;
 }
 
 export class ExpressHttpServer implements HttpServer {
@@ -15,18 +15,18 @@ export class ExpressHttpServer implements HttpServer {
     this.app.use(cors());
   }
 
-  register(method: "get" | "post" | "put" | "delete", url: string, callback: (body: any, query: any) => Promise<any>): void {
+  register(method: "get" | "post" | "put" | "delete", url: string, callback: (body: any, query: any, headers:any) => Promise<any>): void {
     this.app[method](url, async (request: Request, response: Response) => {
       try {
-        const output = await callback(request.body, request.query);
-        response.status(200).json({ output });
+        const output = await callback(request.body, request.query, request.headers);
+        response.status(200).json( output );
       } catch (error: any) {
         response.status(500).json({ error: error.message });
       }
     });
   }
 
-  listen(port: number): void {
+  listen(port: string | undefined): void {
     console.log(`Server listening on port ${port}`);
     this.app.listen(port);
   }

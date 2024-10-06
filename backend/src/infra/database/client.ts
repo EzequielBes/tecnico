@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   if (!global.prisma) {
     global.prisma = new PrismaClient();
-    global.prisma.$connect(); // Conecta ao banco de dados na primeira vez
+    global.prisma.$connect(); 
   }
   prisma = global.prisma;
 }

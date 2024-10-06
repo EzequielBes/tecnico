@@ -17,10 +17,11 @@ export class DocumentPrismaDatabase implements DocumentDatabase {
   async saveDocument(document_id: string, user_id: string, document_name: string, status: string) {
     await prisma.document.create({
       data : {
-        document_id,
-        status,
-        document_name,
-        user_id
+       document_id,
+       document_name,
+       status,
+       user_id,
+       
       }
     })
   }

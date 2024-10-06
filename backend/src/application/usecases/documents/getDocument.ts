@@ -1,6 +1,5 @@
 import { inject } from "../../../di/registry";
-import { Document } from "../../../domain/entity/Document";
-import { InputDocument } from "../../../infra/interfaces/Document";
+
 import { DocumentDatabaseRepository } from "../../../infra/repository/documentDatabase";
 
 export class GetDocument {

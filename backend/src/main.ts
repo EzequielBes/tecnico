@@ -45,4 +45,6 @@ const updatedDocument = new UpdateDocument()
 
 const documentRoute = new DocumentController(http, createDocument, deleteDocument, getDocument, getAllDocuments, updatedDocument)
 
-http.listen(3000)
+const port = process.env.PORT || "4000";
+
+http.listen(port);
