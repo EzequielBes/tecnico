@@ -7,7 +7,11 @@ export default function DocumentList({ documents, setSelectedDocument, handleDel
             <ul>
                 {documents.map((doc) => (
                     <li key={doc.id} className="flex justify-between items-center mb-2 p-2 border-b">
-                        <span className="text-gray-800">{doc.document_name}</span>
+                        <div className='gap-44 flex '>
+                            <span className="text-gray-800 w-40">{doc.document_name}</span>
+                            <span className='text-gray-800'>{doc.status}</span>
+                        </div>
+                       
                         <div>
                             <button onClick={() => setSelectedDocument(doc)} className="text-blue-500 mr-2 hover:underline">Modificar</button>
                             <button onClick={() => handleDelete(doc.document_id)} className="text-red-500 hover:underline">Deletar</button>

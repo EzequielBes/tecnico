@@ -16,6 +16,8 @@ import { GetAllDocuments } from './application/usecases/documents/getAllDocument
 import { GetDocument } from './application/usecases/documents/getDocument';
 import { DeleteDocument } from './application/usecases/documents/deleteDocument';
 import { UpdateDocument } from './application/usecases/documents/updateDocument';
+import { DocumentLocalRepository } from './infra/localdatabase/document';
+import { AccountRepositoryLocal } from './infra/localdatabase/user';
 
 dotenv.config()
 const http  = new ExpressHttpServer()
@@ -25,11 +27,20 @@ const accountDatabase = new UserPrismaDatabase()
 const documentDatabase = new DocumentPrismaDatabase()
 const documentRepository = new DocumentDatabaseRepository()
 
-Registry.getInstance().provide("accountDatabase", accountDatabase)
-Registry.getInstance().provide("documentDatabase", documentDatabase)
+const documentMemory = new DocumentLocalRepository()
+const accountMemory = new AccountRepositoryLocal()
 
-Registry.getInstance().provide("accountRepository", accountRepository)
-Registry.getInstance().provide("documentRepository", documentRepository)
+// Para usar banco de dados
+//Registry.getInstance().provide("accountDatabase", accountDatabase)           <- Database Account
+//Registry.getInstance().provide("documentDatabase", documentDatabase)         <- Database Document
+//Registry.getInstance().provide("accountRepository", accountRepository)       <- Repositorio Account
+//Registry.getInstance().provide("documentRepository", documentRepository)     <- Repositorio Document
+
+// em memoria
+Registry.getInstance().provide("accountRepository", accountMemory)
+Registry.getInstance().provide("documentRepository", documentMemory)
+
+
 
 const createAccount = new CreateAccountUseCase()
 const deleteAccount = new DeleteAccountUseCase()
