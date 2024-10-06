@@ -4,10 +4,10 @@ Essa é uma versao de testes. alguns bugs na parte do front end podem ocorrer
 
 iniciar em dev
 
-Backend
+### Backend
   - entrar na pasta backend
   - npm install, npm run dev
-Front-end
+### Front-end
   - entrar na pasta frontend/front
   - npm install, npm run dev
 
