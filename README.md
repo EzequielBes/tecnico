@@ -43,7 +43,7 @@ Esta API permite o gerenciamento de documentos, incluindo a criação, atualiza�
 ## Autenticação
 
 A API utiliza autenticação baseada em token JWT. 
-colocar do .env o token
+crir .env e adicionar SECRET_KEY="token aleatorio"
 
 markdown
 
