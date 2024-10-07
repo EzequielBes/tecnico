@@ -22,10 +22,10 @@ import { AccountRepositoryLocal } from './infra/localdatabase/user';
 dotenv.config()
 const http  = new ExpressHttpServer()
 
-const accountRepository = new AccountRepositoryDatabase()
-const accountDatabase = new UserPrismaDatabase()
-const documentDatabase = new DocumentPrismaDatabase()
-const documentRepository = new DocumentDatabaseRepository()
+// const accountRepository = new AccountRepositoryDatabase()   class repositorio de account
+// const accountDatabase = new UserPrismaDatabase()             class database prisma de usuario
+// const documentDatabase = new DocumentPrismaDatabase()        class database prisma de document
+// const documentRepository = new DocumentDatabaseRepository()   class repositorio de document
 
 const documentMemory = new DocumentLocalRepository()
 const accountMemory = new AccountRepositoryLocal()
