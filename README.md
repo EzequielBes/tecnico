@@ -68,7 +68,7 @@ markdown
 
 - **200**: Documento criado com sucesso.
 - **400**: Requisição inválida.
-- **401**: Não autorizado.
+- **402**: Não autorizado.
 
 #### Exemplo de Requisição
 
