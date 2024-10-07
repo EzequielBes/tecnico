@@ -1,5 +1,6 @@
 import { inject } from "../../../di/registry";
 import { AccountRepository } from "../../../infra/repository/databaseRepository";
+import { AppError } from "../../../utils/errormap";
 import { generateJsonWebToken } from "../authentication/jwtGenerate";
 
 export class GetAccountUseCase {
@@ -8,9 +9,10 @@ export class GetAccountUseCase {
 
   constructor () {}
   async execute(input: accountDTO) {
-    if(!input.email) throw new Error("Name or Email not valids");
+    try {
+    if(!input.email) throw new AppError("Name or Email not valids", 400);
     const account = await this.accountRepository.getAccountByEmail(input.email);
-    if (!account) throw new Error("Account not exists");
+    if (!account) throw new AppError("Account not exists", 404);
     const jwtGenerate = await generateJsonWebToken(account.account_id, account.email.getValue(), account.name )
     const output = {
       account_id : account.account_id,
@@ -19,6 +21,10 @@ export class GetAccountUseCase {
       jwt: jwtGenerate
     }
     return output
+  } catch(error:any) {
+      if(error.statusCode) throw new AppError(error.message, error.statusCode)
+      if(!error.statusCode)  throw new AppError(error.message, 402)
+  }
   }
 }
 
