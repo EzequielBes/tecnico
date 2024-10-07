@@ -12,7 +12,6 @@ export class CreateAccountUseCase {
     
     const accountExists = await this.accountRepository.getAccountByEmail(input.email);
     if (accountExists) throw new Error("Account already exists");
-    console.log(accountExists)
     const account = Account.create(input.email, input.name)
     await this.accountRepository.saveAccount(account);
     return "Account created"
