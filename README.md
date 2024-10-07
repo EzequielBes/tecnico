@@ -92,7 +92,7 @@ document_id	string	ID do documento a ser buscado
 Respostas
 
     200: Documento encontrado.
-    404: Documento não encontrado.
+    402: Documento não encontrado.
 
 Exemplo de Requisição
 
@@ -132,8 +132,7 @@ document_id	string	ID do documento a ser deletado
 Respostas
 
     200: Documento deletado com sucesso.
-    401: Não autorizado.
-    404: Documento não encontrado.
+    402: Não autorizado.
 
 Exemplo de Requisição
 
@@ -156,8 +155,7 @@ account_id	string	ID da conta associada
 Respostas
 
     200: Documento atualizado com sucesso.
-    400: Requisição inválida.
-    404: Documento não encontrado.
+    402: Requisição inválida.
 
 Exemplo de Requisição
 
@@ -189,8 +187,7 @@ PUT /updateDocument
 #### Respostas
 
 - **200**: Conta criada com sucesso.
-- **400**: Requisição inválida.
-- **409**: E-mail já cadastrado.
+- **402**: Requisição inválida.
 
 #### Exemplo de Requisição
 
@@ -234,7 +231,7 @@ account_id	string	ID da conta a ser deletada
 Respostas
 
     200: Conta deletada com sucesso.
-    404: Conta não encontrada.
+    402: Conta não encontrada.
 
 Exemplo de Requisição
 
@@ -256,8 +253,8 @@ name	string	Novo nome do usuário
 Respostas
 
     200: Conta atualizada com sucesso.
-    400: Requisição inválida.
-    404: Conta não encontrada.
+    402: Requisição inválida.
+    
 
 Exemplo de Requisição
 
