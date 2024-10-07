@@ -21,7 +21,7 @@ export class ExpressHttpServer implements HttpServer {
         const output = await callback(request.body, request.query, request.headers);
         response.status(200).json( output );
       } catch (error: any) {
-        response.status(500).json({ error: error.message });
+        response.status(402).json({ error: error.message });
       }
     });
   }
