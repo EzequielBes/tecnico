@@ -19,9 +19,13 @@ export class DocumentLocalRepository implements DocumentRepository {
       Document.restore(document.document_id, document.document_name, document.status, document.user_id)
     );
   }
-
   async deleteDocument(document_id: string): Promise<void> {
-    this.documents = this.documents.filter(doc => doc.document_id !== document_id);
+    const index = this.documents.findIndex(doc => doc.document_id === document_id);
+    if (index !== -1) {
+      this.documents.splice(index, 1); // Remove o documento do array
+    } else {
+      throw new Error(`Document with ID ${document_id} not found.`);
+    }
   }
 
   async updateDocument(updatedDocument: Document): Promise<void> {
