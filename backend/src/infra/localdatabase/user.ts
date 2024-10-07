@@ -20,7 +20,7 @@ export class AccountRepositoryLocal implements AccountRepository {
   async updateAccount(account: Account): Promise<void> {
     const index = this.accounts.findIndex(acc => acc.account_id === account.account_id);
     if (index !== -1) {
-      this.accounts[index] = account; // Substitui a conta existente pela nova
+      this.accounts[index] = account; 
     }
   }
 }
