@@ -22,7 +22,7 @@ export class DocumentLocalRepository implements DocumentRepository {
   async deleteDocument(document_id: string): Promise<void> {
     const index = this.documents.findIndex(doc => doc.document_id === document_id);
     if (index !== -1) {
-      this.documents.splice(index, 1); // Remove o documento do array
+      this.documents.splice(index, 1); 
     } else {
       throw new Error(`Document with ID ${document_id} not found.`);
     }
